@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
+import Hero from "../components/Hero/Hero";
 
 function Home() {
   return (
@@ -6,7 +7,7 @@ function Home() {
       <Navbar />
 
       <main className="pt-24">
-        {/* Hero Section will go here */}
+        <Hero />
       </main>
     </div>
   );
