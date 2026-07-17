@@ -1,5 +1,8 @@
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
+import Brands from "../components/Brands/Brands";
+import Categories from "../components/Categories/Categories";
+
 
 function Home() {
   return (
@@ -8,6 +11,8 @@ function Home() {
 
       <main className="pt-24">
         <Hero />
+         <Brands />
+         <Categories />
       </main>
     </div>
   );
