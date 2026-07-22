@@ -1,25 +1,24 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 import logo from "../../assets/images/logo.png";
 
 const links = [
-  { name: "Home", path: "/" },
-  { name: "Products", path: "/products" },
-  { name: "Services", path: "/services" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", href: "#home" },
+  { name: "Products", href: "#products" },
+  { name: "Services", href: "#services" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
 function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b border-orange-500/20 bg-black/70 backdrop-blur-md">
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-orange-500/20 bg-black/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
         {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-3">
+        <a href="#home" className="flex items-center gap-3">
           <img
             src={logo}
             alt="Beesalam Technologies"
@@ -35,29 +34,23 @@ function Navbar() {
               TECHNOLOGIES
             </p>
           </div>
-        </NavLink>
+        </a>
 
         {/* Desktop Menu */}
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
-            <NavLink
+            <a
               key={link.name}
-              to={link.path}
-              className={({ isActive }) =>
-                `transition ${
-                  isActive
-                    ? "text-orange-400"
-                    : "text-white hover:text-orange-400"
-                }`
-              }
+              href={link.href}
+              className="text-white transition duration-300 hover:text-orange-400"
             >
               {link.name}
-            </NavLink>
+            </a>
           ))}
         </nav>
 
-        {/* Button */}
-        <button className="hidden rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 px-6 py-3 font-semibold text-white transition hover:scale-105 lg:block">
+        {/* Shop Button */}
+        <button className="hidden rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 px-6 py-3 font-semibold text-white transition duration-300 hover:scale-105 lg:block">
           Shop Now
         </button>
 
@@ -71,32 +64,28 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div className="border-t border-orange-500/20 bg-[#111111] lg:hidden">
-          <nav className="flex flex-col gap-5 p-6">
-            {links.map((link) => (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `transition ${
-                    isActive
-                      ? "text-orange-400"
-                      : "text-white hover:text-orange-400"
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
+      <div
+        className={`overflow-hidden bg-[#111111] transition-all duration-300 lg:hidden ${
+          open ? "max-h-96 border-t border-orange-500/20" : "max-h-0"
+        }`}
+      >
+        <nav className="flex flex-col p-6">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-gray-800 py-4 text-white transition hover:text-orange-400"
+            >
+              {link.name}
+            </a>
+          ))}
 
-            <button className="rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 py-3 font-semibold text-white">
-              Shop Now
-            </button>
-          </nav>
-        </div>
-      )}
+          <button className="mt-6 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 py-3 font-semibold text-white transition hover:scale-105">
+            Shop Now
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }
