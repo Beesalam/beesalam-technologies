@@ -73,11 +73,11 @@ function Footer() {
           <h3 className="mb-6 text-xl font-bold">Quick Links</h3>
 
           <ul className="space-y-3 text-gray-400">
-            <li><a href="#" className="hover:text-orange-400">Home</a></li>
-            <li><a href="#" className="hover:text-orange-400">Products</a></li>
-            <li><a href="#" className="hover:text-orange-400">Services</a></li>
-            <li><a href="#" className="hover:text-orange-400">About</a></li>
-            <li><a href="#" className="hover:text-orange-400">Contact</a></li>
+            <li><a href="/" className="hover:text-orange-400">Home</a></li>
+            <li><a href="/products" className="hover:text-orange-400">Products</a></li>
+            <li><a href="/services" className="hover:text-orange-400">Services</a></li>
+            <li><a href="/about" className="hover:text-orange-400">About</a></li>
+            <li><a href="/contact" className="hover:text-orange-400">Contact</a></li>
           </ul>
         </div>
 
@@ -102,17 +102,21 @@ function Footer() {
 
             <div className="flex items-start gap-3">
               <FaMapMarkerAlt className="mt-1 text-orange-400" />
-              <p>Lagos, Nigeria</p>
+              <span>14, Oremeji street, Ikeja, Lagos state, Nigeria</span>
             </div>
 
             <div className="flex items-center gap-3">
               <FaPhoneAlt className="text-orange-400" />
-              <p>+234 XXX XXX XXXX</p>
+               <a href="tel:+2348063562104" className="hover:text-orange-400">
+                 +234 806 356 2104
+               </a>
             </div>
 
             <div className="flex items-center gap-3">
               <FaEnvelope className="text-orange-400" />
-              <p>info@beesalamtech.com</p>
+              <a href="mailto:beesalamtechnologieslimited@gmail.com" className="hover:text-orange-400">
+                beesalamtechnologieslimited@gmail.com
+              </a>
             </div>
 
           </div>
