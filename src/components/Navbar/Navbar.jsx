@@ -1,13 +1,12 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 import logo from "../../assets/images/logo.png";
 
 const links = [
-  { name: "Home", href: "#home" },
-  { name: "Products", href: "#products" },
-  { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", path: "/" },
+  { name: "Products", path: "/products" },
+  { name: "About", path: "/about" },
 ];
 
 function Navbar() {
@@ -16,9 +15,8 @@ function Navbar() {
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-orange-500/20 bg-black/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3">
+        <NavLink to="/" className="flex items-center gap-3">
           <img
             src={logo}
             alt="Beesalam Technologies"
@@ -34,25 +32,34 @@ function Navbar() {
               TECHNOLOGIES
             </p>
           </div>
-        </a>
+        </NavLink>
 
         {/* Desktop Menu */}
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
-            <a
+            <NavLink
               key={link.name}
-              href={link.href}
-              className="text-white transition duration-300 hover:text-orange-400"
+              to={link.path}
+              className={({ isActive }) =>
+                `font-medium transition duration-300 ${
+                  isActive
+                    ? "text-orange-400"
+                    : "text-white hover:text-orange-400"
+                }`
+              }
             >
               {link.name}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
         {/* Shop Button */}
-        <button className="hidden rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 px-6 py-3 font-semibold text-white transition duration-300 hover:scale-105 lg:block">
+        <NavLink
+          to="/products"
+          className="hidden rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 px-6 py-3 font-semibold text-white transition duration-300 hover:scale-105 lg:block"
+        >
           Shop Now
-        </button>
+        </NavLink>
 
         {/* Mobile Menu Button */}
         <button
@@ -71,19 +78,29 @@ function Navbar() {
       >
         <nav className="flex flex-col p-6">
           {links.map((link) => (
-            <a
+            <NavLink
               key={link.name}
-              href={link.href}
+              to={link.path}
               onClick={() => setOpen(false)}
-              className="border-b border-gray-800 py-4 text-white transition hover:text-orange-400"
+              className={({ isActive }) =>
+                `border-b border-gray-800 py-4 font-medium transition ${
+                  isActive
+                    ? "text-orange-400"
+                    : "text-white hover:text-orange-400"
+                }`
+              }
             >
               {link.name}
-            </a>
+            </NavLink>
           ))}
 
-          <button className="mt-6 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 py-3 font-semibold text-white transition hover:scale-105">
+          <NavLink
+            to="/products"
+            onClick={() => setOpen(false)}
+            className="mt-6 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 py-3 text-center font-semibold text-white transition hover:scale-105"
+          >
             Shop Now
-          </button>
+          </NavLink>
         </nav>
       </div>
     </header>

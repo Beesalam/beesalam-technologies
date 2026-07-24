@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 function CTA() {
   return (
@@ -22,9 +23,9 @@ function CTA() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <button className="rounded-xl bg-black px-8 py-4 font-semibold transition hover:scale-105">
+            <NavLink to="/products" className="rounded-xl bg-black px-8 py-4 font-semibold transition hover:scale-105">
               Shop Products
-            </button>
+            </NavLink>
 
             <button className="flex items-center gap-2 rounded-xl border border-white px-8 py-4 font-semibold transition hover:bg-white hover:text-orange-500">
               Contact Us

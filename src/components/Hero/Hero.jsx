@@ -5,6 +5,7 @@ import {
   FaShippingFast,
 } from "react-icons/fa";
 import HeroProducts from "./HeroProducts";
+import { NavLink } from "react-router-dom"
 
 function Hero() {
   return (
@@ -50,9 +51,9 @@ function Hero() {
 
           {/* Buttons */}
           <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
-            <button className="rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 px-8 py-4 font-semibold text-white transition duration-300 hover:scale-105">
+            <NavLink to="/products" className="rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 px-8 py-4 font-semibold text-white transition duration-300 hover:scale-105">
               Explore Products
-            </button>
+            </NavLink>
 
             <button className="rounded-xl border border-orange-500 px-8 py-4 font-semibold text-white transition duration-300 hover:bg-orange-500">
               Contact Us
