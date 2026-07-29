@@ -18,7 +18,7 @@ function ContactInfo() {
     {
       icon: <FaMapMarkerAlt />,
       title: "Location",
-      value: "Magboro, Ogun State, Nigeria",
+      value: " 14, Oremeji Street, Ikeja, Lagos State, Nigeria",
       link: null,
     },
   ];

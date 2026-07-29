@@ -1,4 +1,7 @@
-function CategoryFilter() {
+function CategoryFilter({
+  selectedCategory,
+  setSelectedCategory,
+}) {
   const categories = [
     "All",
     "Phones",
@@ -9,12 +12,13 @@ function CategoryFilter() {
   ];
 
   return (
-    <div className="mt-8 flex flex-wrap gap-4">
-      {categories.map((category, index) => (
+    <div className="flex flex-wrap gap-4">
+      {categories.map((category) => (
         <button
-          key={index}
+          key={category}
+          onClick={() => setSelectedCategory(category)}
           className={`rounded-xl px-6 py-3 font-medium transition ${
-            index === 0
+            selectedCategory === category
               ? "bg-orange-500 text-white"
               : "bg-[#111111] text-gray-300 hover:bg-orange-500 hover:text-white"
           }`}
