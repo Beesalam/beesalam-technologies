@@ -29,28 +29,29 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin/login" element={<Login />} />
         <Route
-           path="/admin/dashboard"
-           element={
-           <ProtectedRoute>
-           <Dashboard />
-           </ProtectedRoute>
+         path="/admin/dashboard"
+         element={
+         <ProtectedRoute>
+         <Dashboard />
+         </ProtectedRoute>
            }
         />
-       <Route
-  path="/admin/products"
-  element={
-    <ProtectedRoute>
-      <AdminProducts />
-    </ProtectedRoute>
-  }
-/>     <Route
-  path="/admin/products/add"
-  element={
-    <ProtectedRoute>
-      <AddProduct />
-    </ProtectedRoute>
-  }
-/>
+         <Route
+          path="/admin/products"
+          element={
+         <ProtectedRoute>
+         <AdminProducts />
+        </ProtectedRoute>
+          }
+        />     
+         <Route
+         path="/admin/products/add"
+         element={
+         <ProtectedRoute>
+         <AddProduct />
+         </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
