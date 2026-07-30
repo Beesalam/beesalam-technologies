@@ -10,7 +10,9 @@ import ContactPage from "./pages/ContactPage";
 // Admin Pages
 import Login from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
-
+import ProtectedRoute from "./admin/components/ProtectedRoute";
+import AdminProducts from "./admin/pages/Products";
+import AddProduct from "./admin/pages/AddProduct";
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +28,29 @@ function App() {
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route
+           path="/admin/dashboard"
+           element={
+           <ProtectedRoute>
+           <Dashboard />
+           </ProtectedRoute>
+           }
+        />
+       <Route
+  path="/admin/products"
+  element={
+    <ProtectedRoute>
+      <AdminProducts />
+    </ProtectedRoute>
+  }
+/>     <Route
+  path="/admin/products/add"
+  element={
+    <ProtectedRoute>
+      <AddProduct />
+    </ProtectedRoute>
+  }
+/>
       </Routes>
     </BrowserRouter>
   );

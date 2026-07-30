@@ -34,7 +34,7 @@ const Login = () => {
 
       toast.success("Login successful!");
 
-      navigate("/admin/dashboard");
+      navigate("/admin/dashboard", { replace: true });
     } catch (error) {
       toast.error(error.message);
     } finally {
