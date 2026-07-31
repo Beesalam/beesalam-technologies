@@ -1,21 +1,50 @@
-import { FiBell, FiSearch } from "react-icons/fi";
+import {
+  FiBell,
+  FiMenu,
+  FiSearch,
+} from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setSidebarOpen }) => {
+  const location = useLocation();
+
+  const getPageTitle = () => {
+    if (location.pathname.includes("/products")) return "Products";
+    if (location.pathname.includes("/orders")) return "Orders";
+    if (location.pathname.includes("/customers")) return "Customers";
+    if (location.pathname.includes("/settings")) return "Settings";
+    return "Dashboard";
+  };
+
   return (
-    <header className="h-20 bg-white border-b border-gray-200 px-8 flex items-center justify-between">
+    <header className="sticky top-0 z-30 h-20 bg-white border-b border-gray-200 px-4 md:px-8 flex items-center justify-between">
       {/* Left */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-        <p className="text-sm text-gray-500">
-          Welcome back, Admin 👋
-        </p>
+      <div className="flex items-center gap-4">
+        {/* Mobile Menu */}
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="lg:hidden h-11 w-11 rounded-xl bg-gray-100 flex items-center justify-center bg-orange-500"
+        >
+          <FiMenu size={22} />
+        </button>
+
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800">
+            {getPageTitle()}
+          </h1>
+
+          <p className="text-sm text-gray-500 hidden sm:block">
+            Welcome back, Admin 👋
+          </p>
+        </div>
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-3 md:gap-5">
         {/* Search */}
-        <div className="hidden lg:flex items-center bg-gray-100 rounded-xl px-4 py-2 w-72">
+        <div className="hidden xl:flex items-center bg-gray-100 rounded-xl px-4 py-2 w-72">
           <FiSearch className="text-gray-400" />
+
           <input
             type="text"
             placeholder="Search..."
@@ -31,14 +60,19 @@ const Header = () => {
         </button>
 
         {/* Profile */}
-        <div className="flex items-center gap-3 cursor-pointer">
+        <div className="flex items-center gap-3">
           <div className="h-11 w-11 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold">
             A
           </div>
 
           <div className="hidden md:block">
-            <p className="font-semibold text-gray-800">Administrator</p>
-            <p className="text-sm text-gray-500">Admin</p>
+            <p className="font-semibold text-gray-800">
+              Administrator
+            </p>
+
+            <p className="text-sm text-gray-500">
+              Admin
+            </p>
           </div>
         </div>
       </div>

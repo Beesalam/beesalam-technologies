@@ -55,7 +55,7 @@ const AddProduct = () => {
 
   return (
     <AdminLayout>
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
             Add Product

@@ -24,18 +24,18 @@ const RecentProducts = () => {
     `₦${Number(amount).toLocaleString()}`;
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 mt-10 overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 mt-8 overflow-hidden">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-gray-200">
-        <h2 className="text-2xl font-bold text-gray-800">
+      <div className="px-4 sm:px-6 py-5 border-b border-gray-200">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           Recent Products
         </h2>
       </div>
 
-      {/* Table */}
+      {/* Responsive Table */}
       <div className="overflow-x-auto">
-        <table className="w-full text-gray-700">
-          <thead className="bg-gray-50 text-gray-700">
+        <table className="min-w-[850px] w-full text-gray-700">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-4 text-left font-semibold">Image</th>
               <th className="px-6 py-4 text-left font-semibold">Product</th>
@@ -45,11 +45,14 @@ const RecentProducts = () => {
             </tr>
           </thead>
 
-          <tbody className="text-gray-700">
+          <tbody>
             {loading ? (
               <tr>
-                <td colSpan={5} className="text-center py-10">
-                  Loading...
+                <td
+                  colSpan={5}
+                  className="text-center py-10 text-gray-500"
+                >
+                  Loading recent products...
                 </td>
               </tr>
             ) : products.length === 0 ? (
@@ -58,45 +61,44 @@ const RecentProducts = () => {
                   colSpan={5}
                   className="text-center py-10 text-gray-500"
                 >
-                  No products available.
+                  No recent products found.
                 </td>
               </tr>
             ) : (
               products.map((product) => (
                 <tr
                   key={product.id}
-                  className="border-t border-gray-200 hover:bg-gray-50 transition-colors"
+                  className="border-t border-gray-200 hover:bg-gray-50 transition"
                 >
                   {/* Image */}
-                  <td className="px-6 py-5 align-middle">
+                  <td className="px-6 py-5">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-16 h-16 rounded-xl object-cover"
+                      className="w-16 h-16 rounded-xl object-cover border"
                     />
                   </td>
 
                   {/* Product */}
-                  <td className="px-6 py-5 align-middle">
-                    <div className="font-semibold text-gray-900 leading-6">
+                  <td className="px-6 py-5">
+                    <h3 className="font-semibold text-gray-900">
                       {product.name}
-                    </div>
+                    </h3>
 
-                    <div className="text-sm text-gray-500 mt-1">
+                    <p className="text-sm text-gray-500 mt-1">
                       {product.brand}
-                    </div>
+                    </p>
                   </td>
 
                   {/* Category */}
-                  <td className="px-6 py-5 align-middle">
-                    {product.category
-                      ? product.category.charAt(0).toUpperCase() +
-                        product.category.slice(1).toLowerCase()
-                      : "-"}
+                  <td className="px-6 py-5">
+                    <span className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm">
+                      {product.category}
+                    </span>
                   </td>
 
                   {/* Stock */}
-                  <td className="px-6 py-5 align-middle">
+                  <td className="px-6 py-5">
                     <span
                       className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${
                         product.stock === 0
@@ -111,7 +113,7 @@ const RecentProducts = () => {
                   </td>
 
                   {/* Price */}
-                  <td className="px-6 py-5 align-middle font-semibold text-gray-900">
+                  <td className="px-6 py-5 font-semibold text-gray-900">
                     {formatCurrency(product.price)}
                   </td>
                 </tr>
