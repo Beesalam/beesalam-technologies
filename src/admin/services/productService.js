@@ -66,3 +66,37 @@ export const updateProduct = async (id, product) => {
 export const deleteProduct = async (id) => {
   await deleteDoc(doc(db, "products", id));
 };
+
+// Get Product Statistics
+export const getProductStats = async () => {
+  const products = await getProducts();
+
+  const totalProducts = products.length;
+
+  const lowStock = products.filter(
+    (product) => product.stock > 0 && product.stock <= 5
+  ).length;
+
+  const outOfStock = products.filter(
+    (product) => product.stock === 0
+  ).length;
+
+  const inventoryValue = products.reduce(
+    (total, product) => total + product.price * product.stock,
+    0
+  );
+
+  return {
+    totalProducts,
+    lowStock,
+    outOfStock,
+    inventoryValue,
+  };
+};
+
+// Get Recent Products
+export const getRecentProducts = async (limitCount = 5) => {
+  const products = await getProducts();
+
+  return products.slice(0, limitCount);
+};

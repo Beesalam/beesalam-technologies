@@ -1,5 +1,13 @@
-const DashboardCard = ({ title, value, icon: Icon, color }) => {
-  return (
+import { Link } from "react-router-dom";
+
+const DashboardCard = ({
+  title,
+  value,
+  icon: Icon,
+  color,
+  to,
+}) => {
+  const Card = (
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all">
       <div className="flex items-center justify-between">
         <div>
@@ -19,6 +27,16 @@ const DashboardCard = ({ title, value, icon: Icon, color }) => {
       </div>
     </div>
   );
+
+  if (to) {
+    return (
+      <Link to={to} className="block">
+        {Card}
+      </Link>
+    );
+  }
+
+  return Card;
 };
 
 export default DashboardCard;

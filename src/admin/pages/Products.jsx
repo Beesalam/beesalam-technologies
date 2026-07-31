@@ -12,6 +12,9 @@ import {
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+  const [sortBy, setSortBy] = useState("Newest");
 
   const fetchProducts = async () => {
     try {
@@ -28,6 +31,37 @@ const Products = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const filteredProducts = [...products]
+  .filter((product) => {
+    const matchesSearch =
+      product.name.toLowerCase().includes(search.toLowerCase()) ||
+      product.brand.toLowerCase().includes(search.toLowerCase());
+
+    const matchesCategory =
+      category === "All" || product.category === category;
+
+    return matchesSearch && matchesCategory;
+  })
+  .sort((a, b) => {
+    switch (sortBy) {
+      case "Price Low":
+        return a.price - b.price;
+
+      case "Price High":
+        return b.price - a.price;
+
+      case "Name":
+        return a.name.localeCompare(b.name);
+
+      case "Stock":
+        return b.stock - a.stock;
+
+      case "Newest":
+      default:
+        return 0;
+    }
+  });
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm(
@@ -95,6 +129,44 @@ const Products = () => {
         </Link>
       </div>
 
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-6">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input
+      type="text"
+      placeholder="Search by product or brand..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-black"
+    />
+
+    <select
+      value={category}
+      onChange={(e) => setCategory(e.target.value)}
+      className="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-black"
+    >
+      <option value="All">All Categories</option>
+
+      {[...new Set(products.map((p) => p.category))].map((cat) => (
+        <option key={cat} value={cat}>
+          {cat}
+        </option>
+      ))}
+    </select>
+
+    <select
+      value={sortBy}
+      onChange={(e) => setSortBy(e.target.value)}
+      className="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-black"
+    >
+      <option value="Newest">Newest</option>
+      <option value="Name">Name (A-Z)</option>
+      <option value="Price Low">Price: Low to High</option>
+      <option value="Price High">Price: High to Low</option>
+      <option value="Stock">Stock</option>
+    </select>
+  </div>
+</div>
+
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50">
@@ -118,17 +190,17 @@ const Products = () => {
                   Loading products...
                 </td>
               </tr>
-            ) : products.length === 0 ? (
+            ) : filteredProducts.length === 0 ? (
               <tr>
                 <td
                   colSpan={6}
                   className="text-center py-16 text-gray-500"
                 >
-                  No products available.
+                  No matching products found.
                 </td>
               </tr>
             ) : (
-              products.map((product) => (
+              filteredProducts.map((product) => (
                 <tr
                   key={product.id}
                   className="border-t hover:bg-gray-50"
