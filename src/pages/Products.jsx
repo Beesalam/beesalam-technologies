@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import SearchBar from "../components/Products/SearchBar";
 import CategoryFilter from "../components/Products/CategoryFilter";
 import BrandFilter from "../components/Products/BrandFilter";
@@ -6,15 +7,33 @@ import SortFilter from "../components/Products/SortFilter";
 import ProductGrid from "../components/Products/ProductGrid";
 import SectionTitle from "../components/UI/SectionTitle";
 
+import { getProducts } from "../admin/services/productService";
+
 function Products() {
-  // This will come from the backend later
-  const products = [];
+  const [products, setProducts] = useState([]);
 
   const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedBrand, setSelectedBrand] = useState("All");
+  const [selectedCategory, setSelectedCategory] =
+    useState("All");
+  const [selectedBrand, setSelectedBrand] =
+    useState("All");
   const [sortBy, setSortBy] = useState("default");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Failed to load products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const clearFilters = () => {
     setSearch("");
@@ -26,8 +45,12 @@ function Products() {
   const filteredProducts = products
     .filter((product) => {
       const matchesSearch =
-        product.name.toLowerCase().includes(search.toLowerCase()) ||
-        product.brand.toLowerCase().includes(search.toLowerCase());
+        product.name
+          .toLowerCase()
+          .includes(search.toLowerCase()) ||
+        product.brand
+          .toLowerCase()
+          .includes(search.toLowerCase());
 
       const matchesCategory =
         selectedCategory === "All" ||
@@ -37,7 +60,11 @@ function Products() {
         selectedBrand === "All" ||
         product.brand === selectedBrand;
 
-      return matchesSearch && matchesCategory && matchesBrand;
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesBrand
+      );
     })
     .sort((a, b) => {
       switch (sortBy) {
@@ -90,11 +117,19 @@ function Products() {
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-gray-300">
-            Showing{" "}
-            <span className="font-semibold text-orange-500">
-              {filteredProducts.length}
-            </span>{" "}
-            {filteredProducts.length === 1 ? "Product" : "Products"}
+            {loading ? (
+              "Loading products..."
+            ) : (
+              <>
+                Showing{" "}
+                <span className="font-semibold text-orange-500">
+                  {filteredProducts.length}
+                </span>{" "}
+                {filteredProducts.length === 1
+                  ? "Product"
+                  : "Products"}
+              </>
+            )}
           </p>
 
           {(search ||
@@ -113,6 +148,7 @@ function Products() {
         <ProductGrid
           products={filteredProducts}
           hasProducts={products.length > 0}
+          loading={loading}
         />
       </div>
     </main>

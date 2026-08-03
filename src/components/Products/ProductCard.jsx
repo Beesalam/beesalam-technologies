@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { FaArrowRight, FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
+  const formatPrice = (price) =>
+    `₦${Number(price).toLocaleString()}`;
+
   return (
     <motion.div
       whileHover={{ y: -8 }}
@@ -35,18 +39,25 @@ function ProductCard({ product }) {
           {product.category}
         </p>
 
-        <h3 className="mt-2 text-xl font-bold text-white">
+        <h3 className="mt-2 text-xl font-bold text-white line-clamp-2 min-h-[56px]">
           {product.name}
         </h3>
 
-        <p className="mt-3 text-2xl font-bold text-orange-400">
-          ₦{product.price}
+        <p className="mt-2 text-sm text-gray-400">
+          {product.brand}
         </p>
 
-        <button className="mt-6 flex items-center gap-2 font-semibold text-white transition group-hover:gap-4">
+        <p className="mt-4 text-2xl font-bold text-orange-400">
+          {formatPrice(product.price)}
+        </p>
+
+        <Link
+          to={`/products/${product.id}`}
+          className="mt-6 inline-flex items-center gap-2 font-semibold text-white transition-all duration-300 group-hover:gap-4"
+        >
           View Details
           <FaArrowRight />
-        </button>
+        </Link>
       </div>
     </motion.div>
   );
