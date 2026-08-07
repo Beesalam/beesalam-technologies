@@ -5,6 +5,7 @@ import {
   FiUsers,
   FiSettings,
   FiLogOut,
+  FiMail,
   FiX,
 } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
@@ -16,6 +17,7 @@ const menuItems = [
   { name: "Orders", path: "/admin/orders", icon: FiShoppingCart },
   { name: "Customers", path: "/admin/customers", icon: FiUsers },
   { name: "Settings", path: "/admin/settings", icon: FiSettings },
+  { name: "Messages", path: "/admin/messages", icon: FiMail },
 ];
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -31,7 +33,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-screen w-64 bg-zinc-900 text-white flex flex-col transform transition-transform duration-300
+        className={`fixed left-0 top-0 z-50 flex h-screen w-72 flex-col bg-zinc-900 text-white transition-transform duration-300
         ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }

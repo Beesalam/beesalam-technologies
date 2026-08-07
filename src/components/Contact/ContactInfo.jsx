@@ -49,12 +49,12 @@ function ContactInfo() {
               {item.link ? (
                 <a
                   href={item.link}
-                  className="text-gray-300 transition hover:text-orange-400"
+                  className="break-all text-gray-300 transition hover:text-orange-400"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-gray-300">{item.value}</p>
+                <p className="break-all text-gray-300">{item.value}</p>
               )}
             </div>
           ))}

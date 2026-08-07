@@ -1,6 +1,63 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { addMessage } from "../../admin/services/contactService";
+
+
 
 function ContactForm() {
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+  });
+
+  const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+  }; 
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (
+    !formData.name ||
+    !formData.email ||
+    !formData.phone ||
+    !formData.subject ||
+    !formData.message
+  ) {
+    toast.error("Please fill in all fields.");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    await addMessage(formData);
+
+    toast.success("Message sent successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to send message.");
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <section
       id="contact-form"
@@ -25,7 +82,8 @@ function ContactForm() {
             </p>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6"
+            onSubmit={handleSubmit}>
             <div className="grid gap-6 md:grid-cols-2">
               <div>
                 <label className="mb-2 block text-white">
@@ -36,6 +94,9 @@ function ContactForm() {
                   type="text"
                   placeholder="Enter your full name"
                   className="w-full rounded-xl border border-gray-700 bg-[#1A1A1A] px-4 py-3 text-white outline-none transition focus:border-orange-500"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -48,6 +109,9 @@ function ContactForm() {
                   type="email"
                   placeholder="Enter your email"
                   className="w-full rounded-xl border border-gray-700 bg-[#1A1A1A] px-4 py-3 text-white outline-none transition focus:border-orange-500"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -62,6 +126,9 @@ function ContactForm() {
                   type="tel"
                   placeholder="Enter your phone number"
                   className="w-full rounded-xl border border-gray-700 bg-[#1A1A1A] px-4 py-3 text-white outline-none transition focus:border-orange-500"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -74,6 +141,9 @@ function ContactForm() {
                   type="text"
                   placeholder="Enter subject"
                   className="w-full rounded-xl border border-gray-700 bg-[#1A1A1A] px-4 py-3 text-white outline-none transition focus:border-orange-500"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -87,14 +157,18 @@ function ContactForm() {
                 rows="6"
                 placeholder="Type your message..."
                 className="w-full resize-none rounded-xl border border-gray-700 bg-[#1A1A1A] px-4 py-3 text-white outline-none transition focus:border-orange-500"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
               ></textarea>
             </div>
 
             <button
               type="submit"
               className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 py-4 font-semibold text-white transition-all duration-300 hover:scale-[1.02]"
+              disabled={loading}
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
         </motion.div>

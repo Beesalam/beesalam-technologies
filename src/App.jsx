@@ -14,6 +14,7 @@ import ProtectedRoute from "./admin/components/ProtectedRoute";
 import AdminProducts from "./admin/pages/Products";
 import AddProduct from "./admin/pages/AddProduct";
 import EditProduct from "./admin/pages/EditProduct";
+import Messages from "./admin/pages/Messages";
 function App() {
   return (
     <BrowserRouter>
@@ -61,6 +62,14 @@ function App() {
        </ProtectedRoute>
          }
        />
+        <Route
+          path="/admin/messages"
+          element={
+            <ProtectedRoute>
+              <Messages />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -13,34 +13,35 @@ const Header = ({ setSidebarOpen }) => {
     if (location.pathname.includes("/orders")) return "Orders";
     if (location.pathname.includes("/customers")) return "Customers";
     if (location.pathname.includes("/settings")) return "Settings";
+    if (location.pathname.includes("/messages")) return "Messages";
     return "Dashboard";
   };
 
   return (
-    <header className="sticky top-0 z-30 h-20 bg-white border-b border-gray-200 px-4 md:px-8 flex items-center justify-between">
+    <header className="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-gray-200 bg-white px-4 sm:px-6 md:px-8">
       {/* Left */}
       <div className="flex items-center gap-4">
         {/* Mobile Menu */}
         <button
           onClick={() => setSidebarOpen(true)}
-          className="lg:hidden h-11 w-11 rounded-xl bg-gray-100 flex items-center justify-center bg-orange-500"
+          className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500 text-white lg:hidden"
         >
           <FiMenu size={22} />
         </button>
 
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">
+          <h1 className="text-xl font-bold text-gray-800 sm:text-2xl">
             {getPageTitle()}
           </h1>
 
-          <p className="text-sm text-gray-500 hidden sm:block">
+          <p className="hidden text-sm text-gray-500 sm:block">
             Welcome back, Admin 👋
           </p>
         </div>
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-3 md:gap-5">
+      <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
         {/* Search */}
         <div className="hidden xl:flex items-center bg-gray-100 rounded-xl px-4 py-2 w-72">
           <FiSearch className="text-gray-400" />
