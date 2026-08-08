@@ -6,6 +6,8 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import Cart from "./pages/Cart";
+import NotFoundPage from "./pages/NotFoundPage";
 
 // Admin Pages
 import Login from "./admin/pages/Login";
@@ -27,6 +29,7 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/cart" element={<Cart />} />
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<Login />} />
@@ -70,6 +73,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* 404 Catch-all Route */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

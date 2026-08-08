@@ -40,12 +40,23 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         lg:translate-x-0 lg:z-30`}
       >
         {/* Logo */}
-        <div className="h-20 flex items-center justify-between px-5 border-b border-zinc-800">
+        <div className="h-20 flex items-center  gap-3 justify-between px-5 border-b border-zinc-800">
           <img
             src={logo}
             alt="Beesalam Technologies"
             className="h-12 object-contain"
           />
+
+           <div>
+            <h1 className="text-lg font-bold text-white">
+              BEESALAM
+            </h1>
+
+            <p className="text-xs tracking-[4px] text-orange-400">
+              TECHNOLOGIES
+            </p>
+          </div>
+          
 
           {/* Close Button (Mobile Only) */}
           <button

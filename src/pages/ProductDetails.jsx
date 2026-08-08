@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import { getProductById } from "../admin/services/productService";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import useCartStore from "../store/cartStore";
+import toast from "react-hot-toast";
 
 
 function ProductDetails() {
 const { id } = useParams();
+const addToCart = useCartStore((state) => state.addToCart);
 
 const [product, setProduct] = useState(null);
 const [loading, setLoading] = useState(true);
@@ -54,6 +57,12 @@ if (!product) {
 
 const formatPrice = (price) =>
   `₦${Number(price).toLocaleString()}`;
+
+const handleAddToCart = () => {
+  addToCart(product);
+
+  toast.success(`${product.name} added to cart`);
+};
 
   return (
   <>
@@ -118,6 +127,12 @@ const formatPrice = (price) =>
             >
               Order on WhatsApp
             </a>
+            <button
+                 onClick={handleAddToCart}
+                className="mt-10 w-full rounded-xl bg-orange-500 py-4 text-lg font-semibold text-white transition hover:bg-orange-600"
+            >
+               Add to Cart
+            </button>
           </div>
 
         </div>

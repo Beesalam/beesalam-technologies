@@ -12,8 +12,8 @@ function ContactInfo() {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      value: "abdulsalambabatunde305@gmail.com",
-      link: "mailto:abdulsalambabatunde305@gmail.com",
+      value: "beesalamtechnologieslimited@gmail.com",
+      link: "mailto:beesalamtechnologieslimited@gmail.com",
     },
     {
       icon: <FaMapMarkerAlt />,
