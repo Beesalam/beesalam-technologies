@@ -12,8 +12,8 @@ import SectionTitle from "../UI/SectionTitle";
 
 function Testimonials() {
   return (
-    <section className="bg-[#0A0A0A] py-24 text-white">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="bg-[#0A0A0A] py-16 text-white sm:py-20 lg:py-24">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,8 +31,8 @@ function Testimonials() {
         {/* Testimonial Slider */}
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={30}
-          loop={true}
+          spaceBetween={16}
+          loop={testimonials.length > 1}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -44,15 +44,22 @@ function Testimonials() {
           breakpoints={{
             0: {
               slidesPerView: 1,
+              spaceBetween: 16,
+            },
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
             },
             768: {
               slidesPerView: 2,
+              spaceBetween: 24,
             },
             1024: {
               slidesPerView: 3,
+              spaceBetween: 30,
             },
           }}
-          className="mt-12"
+          className="mt-10 !pb-12 sm:mt-12"
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>

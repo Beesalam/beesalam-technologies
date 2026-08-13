@@ -4,33 +4,33 @@ import features from "../../data/features";
 
 function WhyChooseUs() {
   return (
-    <section className="bg-[#0A0A0A] py-24 text-white">
-      <div className="mx-auto max-w-7xl px-6">
-
+    <section className="bg-[#0A0A0A] py-16 text-white sm:py-20 lg:py-24">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-10 text-center sm:mb-12 lg:mb-16"
         >
-          <p className="font-semibold uppercase tracking-[4px] text-orange-400">
+          <p className="text-xs font-semibold uppercase tracking-[3px] text-orange-400 sm:text-sm sm:tracking-[4px]">
             Why Choose Us
           </p>
 
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-3 text-3xl font-bold leading-tight sm:mt-4 sm:text-4xl md:text-5xl">
             Technology You Can Trust
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-400">
-            We provide premium gadgets, reliable repair services, and excellent
-            customer support to ensure you get the best technology experience.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-400 sm:mt-5 sm:text-base sm:leading-8 lg:text-lg">
+            We provide premium gadgets, reliable repair services, and
+            excellent customer support to ensure you get the best technology
+            experience.
           </p>
         </motion.div>
 
         {/* Feature Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {features.map((feature) => (
             <FeatureCard
               key={feature.id}
@@ -40,7 +40,6 @@ function WhyChooseUs() {
             />
           ))}
         </div>
-
       </div>
     </section>
   );

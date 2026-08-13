@@ -1,22 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
 @import "tailwindcss";
+
+/* ================================
+   GLOBAL
+================================ */
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: #0A0A0A;
-  color: white;
-  font-family: "Poppins", sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Swiper Pagination */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: white;
+  font-family: "Poppins", sans-serif;
+
+  /* Prevent accidental horizontal scrolling */
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+
+/* ================================
+   RESPONSIVE CONTAINER
+================================ */
+
+.container-responsive {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+
+/* Mobile */
+@media (min-width: 480px) {
+  .container-responsive {
+    padding-inline: 20px;
+  }
+}
+
+
+/* Tablet */
+@media (min-width: 640px) {
+  .container-responsive {
+    padding-inline: 24px;
+  }
+}
+
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding-inline: 32px;
+  }
+}
+
+
+/* ================================
+   SECTION SPACING
+================================ */
+
+.section-padding {
+  padding-block: 64px;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding-block: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-block: 96px;
+  }
+}
+
+
+/* ================================
+   SWIPER PAGINATION
+================================ */
+
 .swiper-pagination {
   margin-top: 40px !important;
   position: relative !important;
@@ -37,7 +125,11 @@ body {
   opacity: 1;
 }
 
-/* Swiper Navigation */
+
+/* ================================
+   SWIPER NAVIGATION
+================================ */
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #f97316 !important;
@@ -49,6 +141,7 @@ body {
   transform: scale(1.15);
 }
 
+
 /* Hide arrows on mobile */
 @media (max-width: 768px) {
   .swiper-button-next,
@@ -57,3 +150,29 @@ body {
   }
 }
 
+
+/* ================================
+   SMALL MOBILE DEVICES
+================================ */
+
+@media (max-width: 374px) {
+  .container-responsive {
+    padding-inline: 12px;
+  }
+}
+
+
+/* ================================
+   MOBILE TOUCH IMPROVEMENTS
+================================ */
+
+@media (max-width: 768px) {
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}

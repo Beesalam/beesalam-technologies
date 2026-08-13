@@ -3,24 +3,26 @@ import brands from "../../data/brands";
 
 function Brands() {
   return (
-    <section className="bg-[#0A0A0A] py-24 text-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 text-center">
-          <p className="font-semibold uppercase tracking-[4px] text-orange-400">
+    <section className="bg-[#0A0A0A] py-16 text-white sm:py-20 lg:py-24">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mb-10 text-center sm:mb-12 lg:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-[3px] text-orange-400 sm:text-sm sm:tracking-[4px]">
             Trusted Brands
           </p>
 
-          <h2 className="mt-4 text-4xl font-bold">
+          <h2 className="mt-3 text-3xl font-bold sm:mt-4 sm:text-4xl">
             Brands We Offer
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-            We partner with leading technology brands to bring you genuine smartphones,
-            laptops, accessories and more.
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-gray-400 sm:mt-4 sm:text-base sm:leading-8">
+            We partner with leading technology brands to bring you genuine
+            smartphones, laptops, accessories and more.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+        {/* Brands Grid */}
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-6">
           {brands.map((brand) => (
             <BrandCard
               key={brand.id}
