@@ -10,6 +10,7 @@ import {
   FiCheck,
 } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { signOut,} from "firebase/auth";
 
 const Header = ({ setSidebarOpen }) => {
   const location = useLocation();
@@ -45,9 +46,13 @@ const Header = ({ setSidebarOpen }) => {
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
-  const handleLogout = () => {
-    localStorage.removeItem("admin-auth-token");
+  const logout = async () => {
+    try{
+       await signOut(auth);
     navigate("/admin/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   return (
@@ -206,7 +211,7 @@ const Header = ({ setSidebarOpen }) => {
 
                 <div className="border-t border-gray-100 px-2 py-2">
                   <button
-                    onClick={handleLogout}
+                    onClick={logout}
                     className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-600 transition hover:bg-red-50"
                   >
                     <FiLogOut size={16} />
