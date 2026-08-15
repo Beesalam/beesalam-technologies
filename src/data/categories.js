@@ -9,7 +9,7 @@ const categories = [
     title: "Smartphones",
     description: "Latest iPhone, Samsung, Tecno, Infinix and more.",
     icon: FaMobileAlt,
-     path: "/products?category=phones"
+     path: "/products?category=Pgirhones"
   },
   {
     id: 2,
