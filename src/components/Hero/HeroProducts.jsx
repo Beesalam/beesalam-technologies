@@ -9,63 +9,60 @@ import watch from "../../assets/images/hero/watch.png";
 
 function HeroProducts() {
   return (
-    <div className="relative mx-auto flex h-[300px] w-full max-w-[380px] items-center justify-center overflow-hidden sm:h-[400px] sm:max-w-[450px] lg:h-[550px] lg:max-w-none lg:overflow-visible">
+    <div className="relative mx-auto flex h-[280px] w-full max-w-[360px] items-center justify-center sm:h-[390px] sm:max-w-[440px] lg:h-[450px] lg:max-w-[600px] lg:overflow-visible">
       {/* Background Glow */}
-      <div className="absolute h-48 w-48 rounded-full bg-orange-500/20 blur-3xl sm:h-64 sm:w-64 lg:h-[380px] lg:w-[380px]" />
+      <div className="absolute h-44 w-44 rounded-full bg-orange-500/20 blur-3xl sm:h-64 sm:w-64 lg:h-[360px] lg:w-[360px]" />
 
-      {/* MacBook */}
+     
       <motion.img
         src={macbook}
         alt="MacBook"
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 5, repeat: Infinity }}
-        className="absolute z-10 w-40 sm:w-56 lg:w-[340px]"
+        className="absolute z-10 w-36 sm:w-52 lg:w-[300px]"
       />
 
-      {/* HP Laptop */}
+     
       <motion.img
         src={hpLaptop}
         alt="HP Laptop"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 6, repeat: Infinity }}
-        className="absolute bottom-2 left-0 z-20 w-24 sm:bottom-5 sm:left-2 sm:w-32 lg:bottom-8 lg:-left-2 lg:w-[200px]"
+        className="absolute bottom-1 left-0 z-20 w-22 sm:bottom-4 sm:left-1 sm:w-32 lg:bottom-5 lg:-left-2 lg:w-[190px]"
       />
 
-      {/* iPhone */}
       <motion.img
         src={iphone}
         alt="iPhone"
         animate={{ y: [0, -15, 0] }}
         transition={{ duration: 4, repeat: Infinity }}
-        className="absolute left-3 top-2 z-30 w-12 sm:left-8 sm:top-5 sm:w-20 lg:left-16 lg:top-8 lg:w-[150px]"
+        className="absolute left-2 top-1 z-30 w-11 sm:left-7 sm:top-4 sm:w-20 lg:left-14 lg:top-5 lg:w-[140px]"
       />
 
-      {/* Samsung */}
       <motion.img
         src={samsung}
         alt="Samsung"
         animate={{ y: [0, 12, 0] }}
         transition={{ duration: 4.8, repeat: Infinity }}
-        className="absolute right-2 top-3 z-30 w-12 sm:right-6 sm:top-6 sm:w-20 lg:right-6 lg:top-12 lg:w-[150px]"
+        className="absolute right-1 top-2 z-30 w-11 sm:right-5 sm:top-5 sm:w-20 lg:right-5 lg:top-8 lg:w-[140px]"
       />
 
-      {/* Watch */}
       <motion.img
         src={watch}
         alt="Smart Watch"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3.8, repeat: Infinity }}
-        className="absolute bottom-10 right-5 z-30 w-10 sm:bottom-16 sm:right-8 sm:w-14 lg:bottom-24 lg:right-14 lg:w-[110px]"
+        className="absolute bottom-8 right-4 z-30 w-9 sm:bottom-14 sm:right-7 sm:w-14 lg:bottom-16 lg:right-12 lg:w-[110px]"
       />
 
       {/* AirPods */}
-      <motion.img
+      {/* <motion.img
         src={airpods}
         alt="AirPods"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 4.5, repeat: Infinity }}
-        className="absolute bottom-1 left-8 z-30 w-10 sm:bottom-3 sm:left-14 sm:w-14 lg:bottom-6 lg:left-24 lg:w-[110px]"
-      />
+        className="absolute bottom-0 left-7 z-30 w-9 sm:bottom-2 sm:left-12 sm:w-14 lg:bottom-2 lg:left-20 lg:w-[100px]"
+      /> */}
     </div>
   );
 }

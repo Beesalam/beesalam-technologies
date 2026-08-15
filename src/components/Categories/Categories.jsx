@@ -29,6 +29,7 @@ function Categories() {
               title={category.title}
               description={category.description}
               icon={category.icon}
+              path={category.path}
             />
           ))}
         </div>

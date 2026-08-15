@@ -4,7 +4,7 @@ function BrandCard({ image, name }) {
       <img
         src={image}
         alt={name}
-        className="max-h-16 max-w-[120px] object-contain grayscale transition duration-300 group-hover:grayscale-0 sm:max-h-20 sm:max-w-[150px]"
+        className="h-24 w-32 object-contain grayscale transition duration-300 group-hover:grayscale-0 sm:h-28 sm:w-36"
       />
     </div>
   );

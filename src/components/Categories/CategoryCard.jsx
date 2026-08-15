@@ -1,6 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom"
 
-function CategoryCard({ title, description, icon: Icon }) {
+function CategoryCard({ title, description, icon: Icon, path }) {
   return (
     <div className="group rounded-3xl border border-gray-800 bg-[#111111] p-5 transition-all duration-300 hover:-translate-y-2 hover:border-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)] sm:p-6 lg:p-8">
       {/* Icon */}
@@ -19,13 +20,14 @@ function CategoryCard({ title, description, icon: Icon }) {
       </p>
 
       {/* Explore */}
-      <button
+      <Link
+        to={path}
         type="button"
         className="flex items-center gap-2 font-semibold text-orange-400 transition-all duration-300 group-hover:gap-4"
       >
         Explore
         <FaArrowRight />
-      </button>
+      </Link>
     </div>
   );
 }

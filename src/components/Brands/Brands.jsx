@@ -6,7 +6,7 @@ function Brands() {
     <section className="bg-[#0A0A0A] py-16 text-white sm:py-20 lg:py-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-10 text-center sm:mb-12 lg:mb-16">
+        <div className="mb-12 text-center sm:mb-12 lg:mb-16">
           <p className="text-xs font-semibold uppercase tracking-[3px] text-orange-400 sm:text-sm sm:tracking-[4px]">
             Trusted Brands
           </p>

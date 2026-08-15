@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import SearchBar from "../components/Products/SearchBar";
 import CategoryFilter from "../components/Products/CategoryFilter";
@@ -10,13 +11,12 @@ import SectionTitle from "../components/UI/SectionTitle";
 import { getProducts } from "../admin/services/productService";
 
 function Products() {
+  const [searchParams] = useSearchParams()
   const [products, setProducts] = useState([]);
 
   const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] =
-    useState("All");
-  const [selectedBrand, setSelectedBrand] =
-    useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedBrand, setSelectedBrand] = useState("All");
   const [sortBy, setSortBy] = useState("default");
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,15 @@ function Products() {
 
     fetchProducts();
   }, []);
+  useEffect(() => {
+  const category = searchParams.get("category");
+
+  if (category) {
+    setSelectedCategory(category);
+  } else {
+    setSelectedCategory("All");
+  }
+}, [searchParams]);
 
   const clearFilters = () => {
     setSearch("");
