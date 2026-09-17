@@ -4,7 +4,6 @@ import iphone from "../../assets/images/hero/iphone.png";
 import samsung from "../../assets/images/hero/samsung.png";
 import macbook from "../../assets/images/hero/macbook.png";
 import hpLaptop from "../../assets/images/hero/hp.png";
-import airpods from "../../assets/images/hero/airpods.png";
 import watch from "../../assets/images/hero/watch.png";
 
 function HeroProducts() {

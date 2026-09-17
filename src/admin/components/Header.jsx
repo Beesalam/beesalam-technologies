@@ -6,8 +6,6 @@ import {
   FiLogOut,
   FiSettings,
   FiUser,
-  FiX,
-  FiCheck,
 } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { signOut,} from "firebase/auth";

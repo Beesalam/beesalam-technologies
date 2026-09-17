@@ -1,10 +1,10 @@
 function SortFilter({ sortBy, setSortBy }) {
   return (
-    <div className="flex justify-end">
+    <div className="flex w-full justify-end sm:w-auto">
       <select
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value)}
-        className="rounded-xl border border-gray-700 bg-[#111111] px-5 py-3 text-white outline-none focus:border-orange-500"
+        className="w-full rounded-xl border border-gray-700 bg-[#111111] px-3 py-2.5 text-sm text-white outline-none transition focus:border-orange-500 sm:w-auto sm:min-w-[200px] sm:px-4 sm:text-base"
       >
         <option value="default">Featured</option>
         <option value="low-high">Price: Low to High</option>

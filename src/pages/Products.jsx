@@ -92,8 +92,8 @@ function Products() {
     });
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-20 text-white">
-      <div className="mx-auto max-w-7xl px-6">
+    <main className="min-h-screen bg-[#0A0A0A] pb-20 pt-28 text-white">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           subtitle="Our Products"
           title="Discover Premium Gadgets"
@@ -147,7 +147,7 @@ function Products() {
             sortBy !== "default") && (
             <button
               onClick={clearFilters}
-              className="rounded-xl border border-orange-500 px-5 py-2 text-orange-500 transition hover:bg-orange-500 hover:text-white"
+              className="w-full rounded-xl border border-orange-500 px-5 py-2 text-orange-500 transition hover:bg-orange-500 hover:text-white sm:w-auto"
             >
               Clear Filters
             </button>

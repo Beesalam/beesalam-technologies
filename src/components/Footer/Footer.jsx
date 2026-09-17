@@ -14,7 +14,7 @@ import logo from "../../assets/images/logo.png";
 function Footer() {
   return (
     <footer className="border-t border-orange-500/20 bg-[#080808] text-white">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-12 lg:px-8">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-12 lg:px-8">
         {/* Company */}
         <div>
           {/* Logo */}

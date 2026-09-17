@@ -68,36 +68,36 @@ const handleAddToCart = () => {
   <>
     <Navbar />
 
-    <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-20 text-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-12 lg:grid-cols-2">
+    <main className="min-h-screen bg-[#0A0A0A] pb-20 pt-28 text-white">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-12">
 
           {/* Image */}
           <div>
-            <div className="rounded-3xl bg-[#111111] p-8">
+            <div className="rounded-3xl bg-[#111111] p-4 sm:p-6 lg:p-8">
               <img
                 src={selectedImage}
                 alt={product.name}
-                className="mx-auto h-[450px] object-contain"
+                className="mx-auto h-[280px] w-full object-contain sm:h-[360px] lg:h-[450px]"
               />
             </div>
           </div>
 
           {/* Product Details */}
-          <div className="rounded-3xl bg-[#111111] p-8">
-            <p className="text-orange-500 font-semibold">
+          <div className="rounded-3xl bg-[#111111] p-5 sm:p-6 lg:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500 sm:text-base">
               {product.brand}
             </p>
 
-            <h1 className="mt-2 text-4xl font-bold">
+            <h1 className="mt-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
               {product.name}
             </h1>
 
-            <p className="mt-5 text-3xl font-bold text-orange-500">
+            <p className="mt-5 text-2xl font-bold text-orange-500 sm:text-3xl">
               {formatPrice(product.price)}
             </p>
 
-            <div className="mt-5 flex items-center gap-4">
+            <div className="mt-5 flex flex-wrap items-center gap-3 sm:gap-4">
               <span
                 className={`rounded-full px-3 py-1 text-sm ${
                   product.stock > 0
@@ -115,18 +115,18 @@ const handleAddToCart = () => {
               </span>
             </div>
 
-            <p className="mt-8 leading-8 text-gray-300">
+            <p className="mt-8 text-sm leading-7 text-gray-300 sm:text-base sm:leading-8">
               {product.description}
             </p>
 
-            <a
+            {/* <a
               href={`https://wa.me/2348063562104?text=Hello, I'm interested in the ${product.name}.`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 flex w-full items-center justify-center rounded-xl bg-green-600 py-4 text-lg font-semibold text-white transition hover:bg-green-700"
             >
               Order on WhatsApp
-            </a>
+            </a> */}
             <button
                  onClick={handleAddToCart}
                 className="mt-10 w-full rounded-xl bg-orange-500 py-4 text-lg font-semibold text-white transition hover:bg-orange-600"

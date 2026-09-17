@@ -112,153 +112,153 @@ const Products = () => {
 
   return (
     <AdminLayout>
-      <div className="flex items-center justify-between mb-8">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Products</h1>
-          <p className="text-gray-500 mt-1">
+          <h1 className="text-2xl font-bold text-gray-800 sm:text-3xl">Products</h1>
+          <p className="mt-1 text-sm text-gray-500 sm:text-base">
             Manage all your store products.
           </p>
         </div>
 
         <Link
           to="/admin/products/add"
-          className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-xl font-medium transition"
+          className="flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-4 py-3 font-medium text-white transition hover:bg-orange-600 sm:px-5"
         >
           <FiPlus />
           Add Product
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-6">
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <input
-      type="text"
-      placeholder="Search by product or brand..."
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      className="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-black"
-    />
+      <div className="mb-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <input
+            type="text"
+            placeholder="Search by product or brand..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-black outline-none transition focus:ring-2 focus:ring-orange-500"
+          />
 
-    <select
-      value={category}
-      onChange={(e) => setCategory(e.target.value)}
-      className="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-black"
-    >
-      <option value="All">All Categories</option>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-black outline-none transition focus:ring-2 focus:ring-orange-500"
+          >
+            <option value="All">All Categories</option>
 
-      {[...new Set(products.map((p) => p.category))].map((cat) => (
-        <option key={cat} value={cat}>
-          {cat}
-        </option>
-      ))}
-    </select>
+            {[...new Set(products.map((p) => p.category))].map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
 
-    <select
-      value={sortBy}
-      onChange={(e) => setSortBy(e.target.value)}
-      className="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 text-black"
-    >
-      <option value="Newest">Newest</option>
-      <option value="Name">Name (A-Z)</option>
-      <option value="Price Low">Price: Low to High</option>
-      <option value="Price High">Price: High to Low</option>
-      <option value="Stock">Stock</option>
-    </select>
-  </div>
-</div>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-black outline-none transition focus:ring-2 focus:ring-orange-500"
+          >
+            <option value="Newest">Newest</option>
+            <option value="Name">Name (A-Z)</option>
+            <option value="Price Low">Price: Low to High</option>
+            <option value="Price High">Price: High to Low</option>
+            <option value="Stock">Stock</option>
+          </select>
+        </div>
+      </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <table className="w-full">
-          <thead className="bg-gray-50">
-            <tr className="text-left text-gray-700">
-              <th className="px-6 py-4">Image</th>
-              <th className="px-6 py-4">Product</th>
-              <th className="px-6 py-4">Category</th>
-              <th className="px-6 py-4">Price</th>
-              <th className="px-6 py-4">Stock</th>
-              <th className="px-6 py-4">Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {loading ? (
-              <tr>
-                <td
-                  colSpan={6}
-                  className="text-center py-16 text-gray-500"
-                >
-                  Loading products...
-                </td>
+      <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+        <div className="overflow-x-auto">
+          <table className="min-w-[760px] w-full">
+            <thead className="bg-gray-50">
+              <tr className="text-left text-gray-700">
+                <th className="px-4 py-4 sm:px-6">Image</th>
+                <th className="px-4 py-4 sm:px-6">Product</th>
+                <th className="px-4 py-4 sm:px-6">Category</th>
+                <th className="px-4 py-4 sm:px-6">Price</th>
+                <th className="px-4 py-4 sm:px-6">Stock</th>
+                <th className="px-4 py-4 sm:px-6">Actions</th>
               </tr>
-            ) : filteredProducts.length === 0 ? (
-              <tr>
-                <td
-                  colSpan={6}
-                  className="text-center py-16 text-gray-500"
-                >
-                  No matching products found.
-                </td>
-              </tr>
-            ) : (
-              filteredProducts.map((product) => (
-                <tr
-                  key={product.id}
-                  className="border-t hover:bg-gray-50"
-                >
-                  <td className="px-6 py-4">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-16 h-16 object-cover rounded-lg border"
-                    />
-                  </td>
+            </thead>
 
-                  <td className="px-6 py-4">
-                    <div className="font-semibold text-gray-800">
-                      {product.name}
-                    </div>
-
-                    <div className="text-sm text-gray-500">
-                      {product.brand}
-                    </div>
-                  </td>
-
-                  <td className="px-6 py-4 text-gray-700">
-                    {product.category}
-                  </td>
-
-                  <td className="px-6 py-4 font-medium text-gray-900">
-                    {formatPrice(product.price)}
-                  </td>
-
-                  <td className="px-6 py-4">
-                    {getStockBadge(product.stock)}
-                  </td>
-
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                     <Link
-                     to={`/admin/products/edit/${product.id}`}
-                     className="text-blue-600 hover:text-blue-800"
-                     >
-                      <FiEdit size={18} />
-                    </Link>
-
-                      <button
-                        onClick={() =>
-                          handleDelete(product.id)
-                        }
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <FiTrash2 size={18} />
-                      </button>
-                    </div>
+            <tbody>
+              {loading ? (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="py-16 text-center text-gray-500"
+                  >
+                    Loading products...
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : filteredProducts.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="py-16 text-center text-gray-500"
+                  >
+                    No matching products found.
+                  </td>
+                </tr>
+              ) : (
+                filteredProducts.map((product) => (
+                  <tr
+                    key={product.id}
+                    className="border-t hover:bg-gray-50"
+                  >
+                    <td className="px-4 py-4 sm:px-6">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="h-16 w-16 rounded-lg border object-cover"
+                      />
+                    </td>
+
+                    <td className="px-4 py-4 sm:px-6">
+                      <div className="font-semibold text-gray-800">
+                        {product.name}
+                      </div>
+
+                      <div className="text-sm text-gray-500">
+                        {product.brand}
+                      </div>
+                    </td>
+
+                    <td className="px-4 py-4 text-gray-700 sm:px-6">
+                      {product.category}
+                    </td>
+
+                    <td className="px-4 py-4 font-medium text-gray-900 sm:px-6">
+                      {formatPrice(product.price)}
+                    </td>
+
+                    <td className="px-4 py-4 sm:px-6">
+                      {getStockBadge(product.stock)}
+                    </td>
+
+                    <td className="px-4 py-4 sm:px-6">
+                      <div className="flex items-center gap-3">
+                        <Link
+                          to={`/admin/products/edit/${product.id}`}
+                          className="text-blue-600 transition hover:text-blue-800"
+                        >
+                          <FiEdit size={18} />
+                        </Link>
+
+                        <button
+                          onClick={() => handleDelete(product.id)}
+                          className="text-red-600 transition hover:text-red-800"
+                        >
+                          <FiTrash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </AdminLayout>
   );

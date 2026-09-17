@@ -22,26 +22,28 @@ function Hero() {
           className="w-full flex-1 text-center lg:flex-[1.15] lg:text-left"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-2 sm:px-4">
-            <span className="text-sm">⭐</span>
+          <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-2.5 py-1.5 sm:px-4 sm:py-2">
+            <span className="text-xs sm:text-sm">⭐</span>
 
-            <span className="text-xs font-medium text-orange-400 sm:text-sm">
+            <span className="text-[10px] font-medium text-orange-400 sm:text-sm">
               BEESALAM TECHNOLOGIES LIMITED
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] sm:mt-6 sm:text-5xl lg:text-5xl xl:text-6xl">
-  <span className="block whitespace-nowrap">
-    Your Trusted Store for
-  </span>
+          <h1 className="mt-5 text-[2.2rem] font-extrabold leading-[1.02] sm:mt-6 sm:text-5xl lg:text-5xl xl:text-6xl">
+            <span className="block sm:whitespace-nowrap">
+              Your Trusted Store for
+            </span>
 
-  <span className="mt-2 block bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
-    Premium Phones,
-  </span>
+            <span className="mt-2 block bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
+              Premium Phones,
+            </span>
 
-  Laptops & Smart Gadgets
-</h1>
+            <span className="mt-1 block sm:inline">
+              Laptops & Smart Gadgets
+            </span>
+          </h1>
 
           {/* Description */}
           <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-gray-400 sm:mt-6 sm:text-base sm:leading-8 lg:mx-0 lg:text-lg">

@@ -1,7 +1,7 @@
 const ProductForm = ({
   formData,
   setFormData,
-  image,
+  image: _image,
   setImage,
   loading,
   onSubmit,

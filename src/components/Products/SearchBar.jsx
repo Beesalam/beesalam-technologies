@@ -10,7 +10,7 @@ function SearchBar({ search, setSearch }) {
         placeholder="Search products..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full rounded-2xl border border-gray-700 bg-[#111111] py-4 pl-12 pr-4 text-white outline-none transition focus:border-orange-500"
+        className="w-full rounded-2xl border border-gray-700 bg-[#111111] py-3.5 pl-12 pr-4 text-sm text-white outline-none transition focus:border-orange-500 sm:py-4 sm:text-base"
       />
     </div>
   );

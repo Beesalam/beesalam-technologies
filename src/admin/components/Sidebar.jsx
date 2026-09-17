@@ -33,11 +33,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 z-50 flex h-screen w-72 flex-col bg-zinc-900 text-white transition-transform duration-300
+        className={`fixed left-0 top-0 z-50 flex h-screen w-[82vw] max-w-[300px] flex-col bg-zinc-900 text-white transition-transform duration-300
         ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }
-        lg:translate-x-0 lg:z-30`}
+        lg:w-72 lg:translate-x-0 lg:z-30`}
       >
         {/* Logo */}
         <div className="h-20 flex items-center  gap-3 justify-between px-5 border-b border-zinc-800">

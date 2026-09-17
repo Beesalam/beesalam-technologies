@@ -23,7 +23,7 @@ function Navbar() {
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-orange-500/20 bg-black/80 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-3 sm:px-6">
         {/* Logo */}
         <NavLink
           to="/"
@@ -33,15 +33,15 @@ function Navbar() {
           <img
             src={logo}
             alt="Beesalam Technologies"
-            className="h-10 w-10 shrink-0 rounded-xl sm:h-12 sm:w-12"
+            className="h-9 w-9 shrink-0 rounded-xl sm:h-12 sm:w-12"
           />
 
           <div className="min-w-0">
-            <h1 className="text-base font-bold text-white sm:text-lg">
+            <h1 className="text-sm font-bold text-white sm:text-lg">
               BEESALAM
             </h1>
 
-            <p className="text-[9px] tracking-[2px] text-orange-400 sm:text-xs sm:tracking-[4px]">
+            <p className="hidden text-[9px] tracking-[2px] text-orange-400 sm:block sm:text-xs sm:tracking-[4px]">
               TECHNOLOGIES
             </p>
           </div>
